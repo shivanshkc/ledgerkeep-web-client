@@ -1,0 +1,17 @@
+app-budget-stats {
+  // Below properties do not work without display block.
+  display: block;
+  // Bottom margin.
+  margin-bottom: 20px;
+  // This minimum height will keep the chart to an appropriate size while data is loading.
+  min-height: 400px;
+}
+
+app-total-balance-stats {
+  // Below properties do not work without display block.
+  display: block;
+  // This minimum height will keep the chart to an appropriate size while data is loading.
+  min-height: 400px;
+  // Some distance from the bottom.
+  margin-bottom: 20px;
+}

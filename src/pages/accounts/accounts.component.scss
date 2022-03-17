@@ -1,0 +1,31 @@
+.container {
+  // Spacing below the table.
+  margin-bottom: 50px;
+}
+
+// This style does not work with .mat-column-index due to some reason.
+// So we have to use our own class.
+.index-cell {
+  // Index-cell does not need as much width.
+  width: 10%;
+}
+
+.cell:not(.index-cell) {
+  // This weird property makes the cells not overflow other cells.
+  max-width: 0;
+  // Giving equal width to columns (except for index columns).
+  // This works even if column count decreases on small screens! How?
+  width: 30%;
+}
+
+tr.mat-row:hover {
+  // Hover effect on rows.
+  filter: brightness(95%);
+  cursor: pointer;
+}
+
+// Styles for the row that's displayed when there's no data.
+.no-data-row {
+  // Centering the message.
+  text-align: center;
+}

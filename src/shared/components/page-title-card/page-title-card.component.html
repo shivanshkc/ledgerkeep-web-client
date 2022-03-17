@@ -1,0 +1,8 @@
+<mat-card class="vertical-mid mat-elevation-z2">
+  <div class="title vertical-mid thin-font">{{ title }}</div>
+  <span class="spacer"></span>
+
+  <button mat-icon-button *ngIf="showIcon" [disabled]="disableIcon" (click)="onAction.emit()">
+    <mat-icon>{{ icon }}</mat-icon>
+  </button>
+</mat-card>

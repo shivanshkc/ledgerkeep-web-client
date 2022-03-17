@@ -1,0 +1,62 @@
+<h1 mat-dialog-title class="title thin-font">Search Transactions</h1>
+<mat-dialog-content>
+  <form [formGroup]="searchForm" fxLayout="column" autocomplete="off">
+    <div fxFlex fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center" fxLayoutGap="20px" fxLayoutGap.lt-sm="0">
+      <mat-form-field class="w-100" appearance="outline" fxFlex="50" fxFlex.lt-sm="100">
+        <mat-label>Start Amount</mat-label>
+        <input matInput formControlName="startAmount" type="number" />
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline" fxFlex="50" fxFlex.lt-sm="100">
+        <mat-label>End Amount</mat-label>
+        <input matInput formControlName="endAmount" type="number" [errorStateMatcher]="endAmountErrMatcher" />
+        <mat-error *ngIf="searchForm.hasError('endAmountLow')">Should be bigger than start amount.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Date Range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="startDate" placeholder="Start date" />
+        <input matEndDate formControlName="endDate" placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker [touchUi]="isSmallScreen()" #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Account</mat-label>
+      <mat-select formControlName="account" [ngClass]="isAccountLoading ? 'hide-select-arrow' : ''">
+        <mat-option value="">Any</mat-option>
+        <mat-option *ngFor="let acc of accountList" [value]="acc.id">
+          {{ acc.name + ' (' + acc.id + ')' }}
+        </mat-option>
+      </mat-select>
+      <mat-spinner *ngIf="isAccountLoading" matSuffix diameter="20"></mat-spinner>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="">Any</mat-option>
+        <mat-option *ngFor="let cat of allCategories" [value]="cat">
+          {{ capFirst(cat) }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Notes Hint</mat-label>
+      <input matInput formControlName="notesHint" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="space-between-child">
+  <button mat-icon-button matTooltip="Clear all" matTooltipPosition="above" (click)="onClearClick()">
+    <mat-icon>clear_all</mat-icon>
+  </button>
+  <div>
+    <button mat-flat-button color="primary" (click)="onSearchClick()">Search</button>
+    <button mat-flat-button (click)="onCancelClick()">Cancel</button>
+  </div>
+</mat-dialog-actions>

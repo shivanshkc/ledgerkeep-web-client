@@ -1,0 +1,21 @@
+// Styles for coloring the label lines of the polar chart are in the global styles file.
+
+// Styles for card that contains the body (the chart and the table).
+.body-card {
+  // Just a slight margin to avoid collision with the title card.
+  margin-top: 2px;
+  padding: 0;
+}
+
+// Styles for the footer row.
+tr.mat-footer-row {
+  // Italic for emphasis.
+  font-style: italic;
+  // Light green background.
+  background-color: rgb(225, 250, 225);
+}
+
+// Styles for any cell that shows an amount that is good for us, and should be green.
+.good-amount {
+  color: green;
+}

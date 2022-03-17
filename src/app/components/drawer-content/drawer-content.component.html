@@ -1,0 +1,9 @@
+<mat-action-list>
+  <button mat-list-item class="button" *ngFor="let item of items; let idx = index" [routerLink]="[item.link]">
+    <mat-icon mat-list-icon class="icon">{{ item.icon }}</mat-icon>
+    {{ item.name }}
+
+    <!-- No divider below the last list element. -->
+    <mat-divider *ngIf="idx < items.length - 1"></mat-divider>
+  </button>
+</mat-action-list>

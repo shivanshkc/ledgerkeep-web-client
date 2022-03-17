@@ -1,0 +1,18 @@
+.title {
+  // Spacing for the toolbar title.
+  margin-left: 15px;
+  font-family: 'Poiret One', cursive;
+  font-size: xx-large;
+}
+
+// Without this class, the mat-drawer (if present) hides the mat-elevation of the toolbar.
+.toolbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+// Fixing the height of the toolbar so that the drawer can be given a fixed height as well.
+.toolbar-height {
+  height: 54px;
+}

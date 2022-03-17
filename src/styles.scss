@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+// Vertically centers the child (use with only one child).
+.vertical-mid {
+  display: flex !important;
+  align-items: center;
+}
+
+// Right aligns all children.
+.right-align-child {
+  display: flex;
+  justify-content: end;
+}
+
+// Aligns children with equal space between them.
+.space-between-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+// Places two elements on the far ends of the div.
+.spacer {
+  flex: 1 1 auto;
+}
+
+// Thinner font. Makes Roboto look much better.
+.thin-font {
+  // It does not work on h1 tags without !important.
+  font-weight: lighter !important;
+}
+
+// Centers the contents horizontally.
+.text-center {
+  text-align: center;
+}
+
+// Sugar for width: 100%
+.w-100 {
+  width: 100%;
+}
+
+// Sugar for height: 100%
+.h-100 {
+  height: 100%;
+}
+
+// Resolves to whole height minus toolbar height.
+.after-toolbar-height {
+  height: calc(100vh - 54px);
+}
+
+// Puts ellipsis on overflowing text.
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Custom styling for the transaction sheets.
+.create-transaction-sheet,
+.edit-transaction-sheet {
+  // Setting the max-width equal to the min-width (that is set by Angular internally).
+  // Otherwise, the sheet is abnormally wide.
+  max-width: 576px !important;
+}
+
+// Attach the 'hide-select-arrow' class to any mat-select element to hide the dropdown arrow.
+.hide-select-arrow .mat-select-trigger .mat-select-arrow-wrapper {
+  display: none;
+}
+
+// Centers ngx charts horizontally.
+.ngx-charts-outer {
+  margin: 0 auto;
+}
+
+// Attach 'mat-form-field-no-bottom-padding' class to mat-form-fields to remove their bottom padding.
+.mat-form-field-no-bottom-padding .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+// Colors the label line for ngx-charts.
+.pie-label-line {
+  stroke: #e4c635 !important;
+}

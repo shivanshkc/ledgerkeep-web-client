@@ -1,0 +1,23 @@
+<h1 mat-dialog-title class="title thin-font">Search Debit Ratios</h1>
+<mat-dialog-content>
+  <form [formGroup]="searchForm" autocomplete="off">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Date Range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="startDate" placeholder="Start date" />
+        <input matEndDate formControlName="endDate" placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker [touchUi]="isSmallScreen()" #picker></mat-date-range-picker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="space-between-child">
+  <button mat-icon-button matTooltip="Clear all" matTooltipPosition="above" (click)="onClearClick()">
+    <mat-icon>clear_all</mat-icon>
+  </button>
+  <div>
+    <button mat-flat-button color="primary" (click)="onSearchClick()">Search</button>
+    <button mat-flat-button (click)="onCancelClick()">Cancel</button>
+  </div>
+</mat-dialog-actions>

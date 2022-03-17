@@ -1,0 +1,16 @@
+.title {
+  // Space from top.
+  margin-top: 10px;
+  // Space below.
+  margin-bottom: 30px;
+}
+
+.button-div {
+  // Space from bottom.
+  margin-bottom: 20px;
+}
+
+// Never show more than one mat-error.
+mat-error + mat-error {
+  display: none;
+}

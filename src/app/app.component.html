@@ -1,0 +1,13 @@
+<app-toolbar [title]="title" [mainDrawer]="mainDrawer"></app-toolbar>
+
+<mat-drawer-container autosize class="after-toolbar-height" [hasBackdrop]="isSmallScreen()" (click)="onDrawerClick()">
+  <!-- When drawer is opened on large screens, content is pushed sideways.
+       But on smaller screens, it opens with a backdrop. -->
+  <mat-drawer #mainDrawer [mode]="isSmallScreen() ? 'over' : 'side'">
+    <app-drawer-content [items]="drawerList"></app-drawer-content>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,39 @@
+<h1 class="title thin-font">Edit Account</h1>
+
+<form [formGroup]="accountForm" (submit)="onUpdate()" autocomplete="off">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Account ID</mat-label>
+    <input matInput formControlName="accountID" />
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Account Name</mat-label>
+    <input matInput formControlName="accountName" />
+    <mat-error *ngIf="accountForm?.get('accountName')?.hasError('required')"> Account Name is required. </mat-error>
+    <mat-error *ngIf="accountForm?.get('accountName')?.hasError('maxlength')"> Account Name is too long. </mat-error>
+    <mat-error *ngIf="accountForm?.get('accountName')?.hasError('pattern')">
+      Account Name should contain only a-z, A-Z, 0-9, spaces, hyphens and underscores.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Balance</mat-label>
+    <input matInput formControlName="balance" />
+  </mat-form-field>
+
+  <div class="right-align-child button-div">
+    <app-loading-button
+      buttonText="Update"
+      buttonType="submit"
+      (click)="onUpdate()"
+      [loading]="isUpdating"
+      class="right-button"
+    ></app-loading-button>
+    <app-loading-button
+      buttonText="Delete"
+      buttonColor="warn"
+      (click)="onDelete()"
+      [loading]="isDeleting"
+    ></app-loading-button>
+  </div>
+</form>

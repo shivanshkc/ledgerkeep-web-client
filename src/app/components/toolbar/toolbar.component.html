@@ -1,0 +1,15 @@
+<mat-toolbar class="mat-elevation-z6 toolbar-sticky toolbar-height" color="primary">
+  <button
+    mat-icon-button
+    *ngIf="auth.isLoggedIn()"
+    (click)="mainDrawer?.toggle()"
+    aria-label="icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="title">{{ title }}</span>
+  <span class="spacer"></span>
+  <button mat-icon-button *ngIf="auth.isLoggedIn()" (click)="onLogoutClick()" aria-label="icon-button with exit icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

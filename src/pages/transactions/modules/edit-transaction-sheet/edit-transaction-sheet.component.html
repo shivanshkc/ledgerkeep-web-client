@@ -1,0 +1,66 @@
+<h1 class="title thin-font">Edit Transaction</h1>
+
+<form [formGroup]="txForm" (submit)="onUpdate()" autocomplete="off">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number" formControlName="amount" />
+    <mat-error *ngIf="txForm.get('amount')?.hasError('required')">Amount is required.</mat-error>
+    <mat-error *ngIf="txForm.get('amount')?.hasError('positive')">Amount should be positive.</mat-error>
+  </mat-form-field>
+
+  <mat-radio-group formControlName="nature" color="primary">
+    <mat-radio-button value="debit">Debit</mat-radio-button>
+    <mat-radio-button value="credit">Credit</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="datePicker" formControlName="date" />
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker [touchUi]="isSmallScreen()" #datePicker></mat-datepicker>
+    <mat-error *ngIf="txForm.get('date')?.hasError('required')">Date is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Account</mat-label>
+    <mat-select formControlName="account" [ngClass]="isAccountLoading ? 'hide-select-arrow' : ''">
+      <mat-option *ngFor="let acc of accountList" [value]="acc.id">
+        {{ acc.name + ' (' + acc.id + ')' }}
+      </mat-option>
+    </mat-select>
+    <mat-spinner *ngIf="isAccountLoading" matSuffix diameter="20"></mat-spinner>
+    <mat-error *ngIf="txForm.get('account')?.hasError('required')">Account is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category" [errorStateMatcher]="categoryErrorMatcher">
+      <mat-option *ngFor="let cat of getCategoriesForNature()" [value]="cat">
+        {{ capFirst(cat) }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="txForm.get('category')?.hasError('required')">Category is required.</mat-error>
+    <mat-error *ngIf="txForm.hasError('categoryMismatch')">Category is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Notes</mat-label>
+    <textarea matInput formControlName="notes"></textarea>
+  </mat-form-field>
+
+  <div class="right-align-child button-div">
+    <app-loading-button
+      buttonText="Update"
+      buttonType="submit"
+      [loading]="isUpdating"
+      (click)="onUpdate()"
+      class="right-button"
+    ></app-loading-button>
+    <app-loading-button
+      buttonText="Delete"
+      buttonColor="warn"
+      [loading]="isDeleting"
+      (click)="onDelete()"
+    ></app-loading-button>
+  </div>
+</form>

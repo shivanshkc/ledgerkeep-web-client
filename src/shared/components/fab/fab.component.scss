@@ -1,0 +1,19 @@
+// Puts the FAB at the bottom right of the screen.
+.bottom-right {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// For small screens (width < 991px).
+@media only screen and (max-width: 991px) {
+  .bottom-right {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+  }
+}

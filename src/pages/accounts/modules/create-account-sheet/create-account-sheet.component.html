@@ -1,0 +1,32 @@
+<h1 class="title thin-font">New Account</h1>
+
+<form [formGroup]="accountForm" (submit)="onSubmit()" autocomplete="off">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Account ID</mat-label>
+    <input matInput formControlName="accountID" />
+    <mat-error *ngIf="accountForm?.get('accountID')?.hasError('required')"> Account ID is required. </mat-error>
+    <mat-error *ngIf="accountForm?.get('accountID')?.hasError('maxlength')"> Account ID is too long. </mat-error>
+    <mat-error *ngIf="accountForm?.get('accountID')?.hasError('pattern')">
+      Account ID should contain only a-z, A-Z, 0-9, hyphens and underscores.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Account Name</mat-label>
+    <input matInput formControlName="accountName" />
+    <mat-error *ngIf="accountForm?.get('accountName')?.hasError('required')"> Account Name is required. </mat-error>
+    <mat-error *ngIf="accountForm?.get('accountName')?.hasError('maxlength')"> Account Name is too long. </mat-error>
+    <mat-error *ngIf="accountForm?.get('accountName')?.hasError('pattern')">
+      Account Name should contain only a-z, A-Z, 0-9, spaces, hyphens and underscores.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="right-align-child button-div">
+    <app-loading-button
+      buttonText="OK"
+      buttonType="submit"
+      (click)="onSubmit()"
+      [loading]="isLoading"
+    ></app-loading-button>
+  </div>
+</form>

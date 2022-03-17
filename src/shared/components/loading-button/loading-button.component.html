@@ -1,0 +1,15 @@
+<button
+  [type]="buttonType"
+  mat-raised-button
+  [color]="buttonColor"
+  [disabled]="isLoading() || isDisabled()"
+  [ngStyle]="{ height: buttonHeight }"
+>
+  <div *ngIf="isNormal() || isDisabled()">{{ buttonText }}</div>
+  <mat-progress-spinner
+    *ngIf="isLoading()"
+    [color]="spinnerColor"
+    [diameter]="spinnerDia"
+    mode="indeterminate"
+  ></mat-progress-spinner>
+</button>

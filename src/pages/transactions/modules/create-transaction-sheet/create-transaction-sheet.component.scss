@@ -1,0 +1,23 @@
+.title {
+  // Space from top.
+  margin-top: 10px;
+  // Space below.
+  margin-bottom: 30px;
+}
+
+.button-div {
+  // Space from bottom.
+  margin-bottom: 20px;
+}
+
+// Never show more than one mat-error.
+mat-error + mat-error {
+  display: none;
+}
+
+// Radio button margins.
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 20px;
+  margin-top: 7.5px;
+  margin-bottom: 25px;
+}

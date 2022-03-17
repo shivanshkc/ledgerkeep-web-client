@@ -1,0 +1,32 @@
+<mat-card class="card-padding mat-elevation-z8" [@fadeIn]="loginCardState">
+  <mat-card-title class="thin-font title">Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (submit)="onLoginClick()" autocomplete="off">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+        <mat-error *ngIf="loginForm?.get('username')?.hasError('required')"> Username is required. </mat-error>
+        <mat-error *ngIf="loginForm?.get('username')?.hasError('maxlength')"> Username too long. </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="hidePass ? 'password' : 'text'" />
+        <button type="button" mat-icon-button matSuffix (click)="hidePass = !hidePass">
+          <mat-icon>{{ hidePass ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm?.get('password')?.hasError('required')"> Password is required. </mat-error>
+        <mat-error *ngIf="loginForm?.get('password')?.hasError('maxlength')"> Password too long. </mat-error>
+      </mat-form-field>
+
+      <div class="right-align-child">
+        <app-loading-button
+          buttonText="OK"
+          buttonType="submit"
+          (click)="onLoginClick()"
+          [loading]="isLoading"
+        ></app-loading-button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

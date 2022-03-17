@@ -1,0 +1,23 @@
+<div fxFlex fxLayout="column">
+  <app-page-title-card title="Total balance" icon="search" (onAction)="onSearchClick()"></app-page-title-card>
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <mat-card class="body-card" fxFlex fxLayout="row">
+    <!-- We have smaller flex width for bigger screens because the chart unexpectedly overflows the specifies width at times. -->
+    <!-- It behaves well on smaller screens though. -->
+    <!-- There must be, MUST BE, a better solution somewhere on this planet. -->
+    <div fxFlex="95" fxFlex.lt-sm="100">
+      <!-- Notice that animations are disabled by default. That is because when the
+      page opens, we initially show the placeholder chart while the actual data loads.
+      We don't want to animate the placeholder chart. So, initially animations are disabled.-->
+      <ngx-charts-area-chart
+        [xAxis]="true"
+        [yAxis]="true"
+        [scheme]="'picnic'"
+        [gradient]="true"
+        [animations]="false"
+        [results]="chartData"
+      >
+      </ngx-charts-area-chart>
+    </div>
+  </mat-card>
+</div>
