@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/shivanshkc/ledgerkeep-web-client/compare/v1.0.1...v1.0.2) (2022-04-01)
+
+
+### Bug Fixes
+
+* **ci:** set cloud run min-instance count to zero ([68205c4](https://github.com/shivanshkc/ledgerkeep-web-client/commit/68205c4dcaff511daf47d57a6886b5169e27815a))
+
 ## [1.0.1](https://github.com/shivanshkc/ledgerkeep-web-client/compare/v1.0.0...v1.0.1) (2022-03-17)
 
 ### Bug Fixes
