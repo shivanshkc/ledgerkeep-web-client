@@ -1,9 +1,8 @@
 ## [1.0.1](https://github.com/shivanshkc/ledgerkeep-web-client/compare/v1.0.0...v1.0.1) (2022-03-17)
 
-
 ### Bug Fixes
 
-* **ui:** correct favicon location ([9164435](https://github.com/shivanshkc/ledgerkeep-web-client/commit/9164435877ad148e36032147f19058c804a6c6d3))
+- **ui:** correct favicon location ([9164435](https://github.com/shivanshkc/ledgerkeep-web-client/commit/9164435877ad148e36032147f19058c804a6c6d3))
 
 # 1.0.0 (2022-03-17)
 
